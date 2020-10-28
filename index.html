@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Todo list</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <script defer src="script.js"></script> 
+    <!-- defer means the js file will load after the page is done loading -->
+  </head>
+
+  <body onload="initClock()">
+
+    
+    <div class="body2">
+      <div class="datetime">
+        <div class="date">
+          <span id="dayname">Day</span>,
+          <span id="month">Month</span>
+          <span id="daynum">00</span>,
+          <span id="year">Year</span>
+        </div>
+        <div class="time">
+          <span id="hour">00</span>:
+          <span id="minutes">00</span>:
+          <span id="seconds">00</span>
+          <span id="period">AM</span>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <script type="text/javascript">
+      function updateClock(){
+        var now = new Date();
+        var dname = now.getDay(), 
+            mo = now.getMonth(),
+            dnum = now.getDate(),
+            yr = now.getFullYear(),
+            hou = now.getHours(),
+            min = now.getMinutes(),
+            sec = now.getSeconds(),
+            pe = "AM";
+
+        if(hou == 0){
+          hou = 12;
+        }
+        if(hou > 12){
+          hou = hou - 12;
+          pe = "PM";
+        }
+
+        var months = ["January". "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+        var values = [week[dname], months[mo], dnum, yr, hou, min, sec, pe];
+
+        for(var i=0; i<ids.length; i++)
+          document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+
+      }
+
+      function initClock(){
+        updateClock();
+        window.setInterval("updateClock()", 1);
+      }
+
+    </script>
+  -->
+    
+    <h1 class="title">My To-Do List</h1>
+
+    <div class="all-tasks">
+      <h2 class="task-list-title">My lists</h2>
+      <ul class="task-list" data-lists></ul>
+
+      <form action="" data-new-list-form>
+        <input 
+          type="text"
+          class="new list"
+          data-new-list-input
+          placeholder="New List"
+          aria-label="new list"
+        />
+        <button class="btn create" aria-label="create new list">+</button>
+      </form>
+    </div>
+
+    <div class="todo-list" data-list-display-container>
+      <div class="todo-header">
+        <h2 class="list-title" data-list-title>YouTube</h2>
+        <p class="task-count" data-list-count>3 tasks remaining</p>
+      </div>
+
+      <div class="todo-body">
+        <div class="tasks" data-tasks></div>
+
+        <div class="new-task-creator">
+            <form action="" data-new-task-form>
+                <input 
+                  type="text"
+                  data-new-task-input
+                  class="new task"
+                  placeholder="New task"
+                  aria-label="new task"
+                />
+                <button class="btn create" aria-label="create new task">+</button>
+              </form>
+        </div>
+
+        
+
+        <div class="delete-task">
+          <button class="btn delete task" data-clear-complete-tasks-button>Clear completed tasks</button>
+        </div>
+
+        <div class="delete-list">
+          <button class="btn delete list" data-delete-list-button>Delete list</button>
+        </div>
+
+      </div>
+    </div>
+
+   
+    </div>
+    <template id="task-template">
+      <div class="task">
+        <input type="checkbox" />
+        <label>
+          <span class="custom-checkbox"></span>
+        </label>
+      </div>
+    </template>
+  </body>
+</html>
